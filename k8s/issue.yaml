@@ -1,0 +1,13 @@
+# For obtaining TLS certificate: This object telling CertManager application
+# installed inside Kybernetes Cluster via HELM where to get the certificate from. LetsEncrypt in that case.
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: 'nikolakp@gmail'
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    http01: {}
